@@ -50,62 +50,66 @@ async function checkSpam(message) {
 }
 
 export default {
-        async fetch(request, env, ctx) {
-            if (request.method === "OPTIONS") return new Response(null, { status: 204 });
-            if (request.method !== "POST") return new Response("Method Not Allowed", { status: 405 });
+    async fetch(request, env, ctx) {
+        if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+        }});
+        if (request.method !== "POST") return new Response("Method Not Allowed", { status: 405 });
 
-            let token;
+        let token;
 
-            try {
-                const auth = request.headers.get("Authorization");
-                if (!auth) throw "Missing auth header";
-                token = auth.split(" ")[1];
-            } catch {
-                return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
-            }
-
-            // 🔐 VERIFY FIREBASE ID TOKEN
-            let decoded;
-            try {
-                decoded = await jwtVerify(token, JWKS, {
-                    issuer: `https://securetoken.google.com/${FIREBASE_PROJECT_ID}`,
-                    audience: FIREBASE_PROJECT_ID
-                });
-            } catch (e) {
-                return new Response(JSON.stringify({ error: "Invalid Token" }), { status: 401 });
-            }
-
-            // Authenticated user
-            const uid = decoded.payload.user_id;
-            const displayName = decoded.payload.name || "Anonymous";
-
-            const body = await request.json();
-            if (!body.message) return new Response(JSON.stringify({ error: "Missing message" }), { status: 400 });
-
-            if (containsProfanity(body.message)) {
-                return new Response(JSON.stringify({ error: "Inappropriate content detected. Please remove them and try again." }), { status: 400 });
-            }
-
-            if (await checkSpam(body.message)) {
-                return new Response(JSON.stringify({ error: "This looks like spam. Please try again later." }), { status: 400 });
-            }
-
-            // await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-            //     method: "POST",
-            //     headers: { "Content-Type": "application/json" },
-            //     body: JSON.stringify({
-            //         user_id: "x3W7CWcYMOJJ_XUHF",
-            //         service_id: "service_qskfpcj",
-            //         template_id: "template_21t2lau",
-            //         template_params: { name: displayName, feedback: body.message, uid }
-            //     })
-            // });
-
-            return new Response(JSON.stringify({ success: true }), {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*"
-                }
-            });
+        try {
+            const auth = request.headers.get("Authorization");
+            if (!auth) throw "Missing auth header";
+            token = auth.split(" ")[1];
+        } catch {
+            return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
         }
-    };
+
+        // 🔐 VERIFY FIREBASE ID TOKEN
+        let decoded;
+        try {
+            decoded = await jwtVerify(token, JWKS, {
+                issuer: `https://securetoken.google.com/${FIREBASE_PROJECT_ID}`,
+                audience: FIREBASE_PROJECT_ID
+            });
+        } catch (e) {
+            return new Response(JSON.stringify({ error: "Invalid Token" }), { status: 401 });
+        }
+
+        // Authenticated user
+        const uid = decoded.payload.user_id;
+        const displayName = decoded.payload.name || "Anonymous";
+
+        const body = await request.json();
+        if (!body.message) return new Response(JSON.stringify({ error: "Missing message" }), { status: 400 });
+
+        if (containsProfanity(body.message)) {
+            return new Response(JSON.stringify({ error: "Inappropriate content detected. Please remove them and try again." }), { status: 400 });
+        }
+
+        if (await checkSpam(body.message)) {
+            return new Response(JSON.stringify({ error: "This looks like spam. Please try again later." }), { status: 400 });
+        }
+
+        await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                user_id: "x3W7CWcYMOJJ_XUHF",
+                service_id: "service_qskfpcj",
+                template_id: "template_21t2lau",
+                template_params: { name: displayName, feedback: body.message, uid }
+            })
+        });
+
+        return new Response(JSON.stringify({ success: true }), {
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            }
+        });
+    }
+};
