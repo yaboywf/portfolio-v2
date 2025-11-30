@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "portfolio"
+  ],
+  "homepage": "https://github.com/yaboywf/portfolio-backend#readme",
+  "bugs": {
+    "url": "https://github.com/yaboywf/portfolio-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaboywf/portfolio-backend.git"
+  },
+  "license": "ISC",
+  "author": "dylan yeo",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "jose": "^6.1.2"
+  }
+}
