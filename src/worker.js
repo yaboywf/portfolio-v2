@@ -52,15 +52,10 @@ async function checkSpam(message) {
 export default {
     async fetch(request, env, ctx) {
         const origin = request.headers.get("Origin");
-        const allowed = [
-            "http://localhost:5173",
-            "http://localhost:5174", // Vite sometimes runs on this
-            "https://yaboywf.github.io"
-        ];
 
         if (request.method === "OPTIONS") return new Response(null, {
             status: 204, headers: {
-                "Access-Control-Allow-Origin": allowed.includes(origin) ? origin : "null",
+                "Access-Control-Allow-Origin": '*',
                 "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
                 "Access-Control-Allow-Headers": "Content-Type, Authorization",
                 "Access-Control-Max-Age": "86400"
