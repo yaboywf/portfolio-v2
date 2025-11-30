@@ -49,20 +49,23 @@ async function checkSpam(message) {
     return data.score >= 8;
 }
 
+function jsonResponse(data = {}, status = 200) {
+    return new Response((data === null ? null : JSON.stringify(data)), {
+        status,
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Max-Age": "86400"
+        }
+    });
+}
+
 export default {
     async fetch(request, env, ctx) {
-        const origin = request.headers.get("Origin");
-
-        if (request.method === "OPTIONS") return new Response(null, {
-            status: 204, headers: {
-                "Access-Control-Allow-Origin": '*',
-                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Authorization",
-                "Access-Control-Max-Age": "86400"
-            }
-        });
-        
-        if (request.method !== "POST") return new Response("Method Not Allowed", { status: 405 });
+        if (request.method === "OPTIONS") return jsonResponse(null, 204);
+        if (request.method !== "POST") return jsonResponse({ error: "Method Not Allowed" }, 405);
 
         let token;
 
@@ -71,7 +74,7 @@ export default {
             if (!auth) throw "Missing auth header";
             token = auth.split(" ")[1];
         } catch {
-            return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
+            return jsonResponse({ error: "Missing auth header" }, 401);
         }
 
         // 🔐 VERIFY FIREBASE ID TOKEN
@@ -82,7 +85,7 @@ export default {
                 audience: FIREBASE_PROJECT_ID
             });
         } catch (e) {
-            return new Response(JSON.stringify({ error: "Invalid Token" }), { status: 401 });
+            return jsonResponse({ error: "Unauthorized" }, 401);
         }
 
         // Authenticated user
@@ -90,15 +93,9 @@ export default {
         const displayName = decoded.payload.name || "Anonymous";
 
         const body = await request.json();
-        if (!body.message) return new Response(JSON.stringify({ error: "Missing message" }), { status: 400 });
-
-        if (containsProfanity(body.message)) {
-            return new Response(JSON.stringify({ error: "Inappropriate content detected. Please remove them and try again." }), { status: 400 });
-        }
-
-        if (await checkSpam(body.message)) {
-            return new Response(JSON.stringify({ error: "This looks like spam. Please try again later." }), { status: 400 });
-        }
+        if (!body.message) return jsonResponse({ error: "Message is required" }, 400);
+        if (containsProfanity(body.message)) return jsonResponse({ error: "Inappropriate content detected in message." }, 400);
+        if (await checkSpam(body.message)) return jsonResponse({ error: "Message detected as spam and will not be sent." }, 400);
 
         await fetch("https://api.emailjs.com/api/v1.0/email/send", {
             method: "POST",
@@ -111,11 +108,6 @@ export default {
             })
         });
 
-        return new Response(JSON.stringify({ success: true }), {
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            }
-        });
+        return jsonResponse({ success: true });
     }
 };
