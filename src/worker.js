@@ -17,10 +17,7 @@ function containsProfanity(message) {
     // simple substring match (fast)
     for (const bad of PROFANITY) {
         const regex = new RegExp(`\\b${bad}\\b`, "i");
-        if (regex.test(text)) {
-            console.log("Profanity detected:", bad);
-            return true;
-        };
+        if (regex.test(text)) return true;
     }
 
     // safer boundary detection
@@ -45,7 +42,6 @@ async function checkSpam(message) {
     })
 
     const data = await resp.json();
-    console.log("Spam check score:", data);
     return data.score >= 8;
 }
 
