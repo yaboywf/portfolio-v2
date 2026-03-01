@@ -1,26 +1,32 @@
 {
-  "name": "portfolio-backend",
-  "version": "1.0.0",
-  "description": "",
-  "keywords": [
-    "portfolio"
-  ],
-  "homepage": "https://github.com/yaboywf/portfolio-backend#readme",
-  "bugs": {
-    "url": "https://github.com/yaboywf/portfolio-backend/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yaboywf/portfolio-backend.git"
-  },
-  "license": "ISC",
-  "author": "dylan yeo",
-  "type": "commonjs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "jose": "^6.1.2"
-  }
+	"name": "portfolio-backend",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && npm run icons && vite build",
+		"preview": "vite preview",
+		"icons": "node scripts/subset-icons.js"
+	},
+	"dependencies": {
+		"@solidjs/router": "^0.15.4",
+		"motion": "^12.34.3",
+		"ogl": "^1.0.11",
+		"solid-js": "^1.9.10",
+		"solid-motionone": "^1.0.4"
+	},
+	"devDependencies": {
+		"@types/node": "^24.10.1",
+		"fonteditor-core": "^2.6.3",
+		"rollup-plugin-visualizer": "^7.0.0",
+		"sass-embedded": "^1.97.3",
+		"typescript": "~5.9.3",
+		"vite": "^8.0.0-beta.13",
+		"vite-plugin-solid": "^2.11.10",
+		"vite-tsconfig-paths": "^6.1.1"
+	},
+	"overrides": {
+		"vite": "^8.0.0-beta.13"
+	}
 }
