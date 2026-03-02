@@ -1,7 +1,7 @@
 import fs from "fs";
 import https from "https";
 
-const TARGET = "https://yaboywf.github.io";
+const TARGET = "https://dylanyeowf.pages.dev";
 
 const API = `https://api.microlink.io/?url=${encodeURIComponent(TARGET)}&screenshot=true&meta=false`;
 

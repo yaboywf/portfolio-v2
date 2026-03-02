@@ -4,23 +4,24 @@ I have a strong passion for coding and aspire to build a career in the IT field.
 
 # Techstack 
 1. HTML
-2. React JS
-3. CSS
-4. SCSS
-5. JavaScript
-6. TypeScript
-7. Python
-8. C++
-9. Javascript Express
-10. Python Flask
-11. Pygame
-12. MySQL
-13. SQLite
-14. Firebird SQL
-15. Dart
-16. Flutter
-17. Figma
-18. KNIME
+2. CSS
+3. SCSS
+4. SolidJS
+5. NextJS
+6. JavaScript
+7. TypeScript
+8. Python
+9. C++
+10. Javascript Express
+11. Python Flask
+12. Pygame
+13. MySQL
+14. SQLite
+15. Firebird SQL
+16. Dart
+17. Flutter
+18. Figma
+19. KNIME
 
 <b>Learn more about me by visiting my website</b>
 

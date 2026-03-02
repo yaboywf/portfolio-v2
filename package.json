@@ -5,9 +5,10 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc -b && npm run icons && vite build",
+		"build": "tsc -b && npm run icons && npm run touch-icons && vite build",
 		"preview": "vite preview",
-		"icons": "node scripts/subset-icons.js"
+		"icons": "node scripts/subset-icons.js",
+		"touch-icons": "node scripts/appleTouchIcon.js"
 	},
 	"dependencies": {
 		"@solidjs/router": "^0.15.4",
