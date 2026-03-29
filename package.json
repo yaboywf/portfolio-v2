@@ -11,23 +11,23 @@
 		"touch-icons": "node scripts/appleTouchIcon.js"
 	},
 	"dependencies": {
-		"@solidjs/router": "^0.15.4",
-		"motion": "^12.34.3",
+		"@solidjs/router": "^0.16.1",
+		"motion": "^12.38.0",
 		"ogl": "^1.0.11",
-		"solid-js": "^1.9.10",
+		"solid-js": "^1.9.12",
 		"solid-motionone": "^1.0.4"
 	},
 	"devDependencies": {
-		"@types/node": "^24.10.1",
+		"@types/node": "^25.5.0",
 		"fonteditor-core": "^2.6.3",
-		"rollup-plugin-visualizer": "^7.0.0",
-		"sass-embedded": "^1.97.3",
-		"typescript": "~5.9.3",
-		"vite": "^8.0.0-beta.13",
-		"vite-plugin-solid": "^2.11.10",
+		"rollup-plugin-visualizer": "^7.0.1",
+		"sass-embedded": "^1.98.0",
+		"typescript": "~6.0.2",
+		"vite": "^8.0.3",
+		"vite-plugin-solid": "^2.11.11",
 		"vite-tsconfig-paths": "^6.1.1"
 	},
 	"overrides": {
-		"vite": "^8.0.0-beta.13"
+		"vite": "^8.0.3"
 	}
 }
