@@ -18,7 +18,7 @@
 		"solid-motionone": "^1.0.4"
 	},
 	"devDependencies": {
-		"@types/node": "^25.5.0",
+		"@types/node": "^25.6.0",
 		"fonteditor-core": "^2.6.3",
 		"rollup-plugin-visualizer": "^7.0.1",
 		"sass-embedded": "^1.98.0",
