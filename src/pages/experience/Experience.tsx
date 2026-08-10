@@ -16,6 +16,7 @@ const text = `Experiences Overview
 - Temporary Warehouse Assistant     - People's Association
 - Temporary Phone Handler           - Singapore Computer Society
 - Sports Atrium Assistant/Packer    - The Boys' Brigade 21st Singapore Company
+- Assistant Manager
 
 -------------------------------------------------------
 END OF FILE
