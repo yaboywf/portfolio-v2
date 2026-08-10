@@ -16,7 +16,7 @@ const Techstack = () => {
 - Node.js (Express)             - Docker
 - Python (Flask)                - SuperTest
 - Django                        - Minikube / Kubernetes
-- SolidJS
+- Power Platform
 
 [ PROGRAMMING LANGUAGES ]       [ DATABASES ]
 - Python                        - MySQL
