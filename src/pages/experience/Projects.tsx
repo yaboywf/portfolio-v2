@@ -36,7 +36,8 @@ const projects: Project[] = [
     { title: "ReFresh Deals", description: "ReFresh Deals is a mobile app that allows shop owners to post and manage food within their store. Expiring food can be posted to buyers at a discouted price, encouraging them to buy and thereby reducing food waste. Diploma Assignment", usage: ["Flutter", "Dart"], image: "refreshdeals.png", link: "https://github.com/yaboywf/MBAP-Project" },
     { title: "Portfolio Website", description: "Hi! If you are seeing this, congrats! This website has gone through many iterations, transitioning from a simple UI design to what it is now today.", usage: ["React JS", "SCSS", "Firebase Authentication", "Cloudflare Workers"], image: "portfolio.png", link: "https://github.com/yaboywf/yaboywf.github.io" },
     { title: "Social Link Profile", description: "A card design that encompasses a profile picture, name, and social media links. Frontend Mentor challenge.", usage: ["HTML", "CSS"], image: "social.png", link: "https://github.com/yaboywf/social-links-profile" },
-    { title: "Result Summary Component", description: "A card design that shows a summary of test results. Frontend Mentor challenge.", usage: ["HTML", "CSS"], image: "results.png", link: "https://github.com/yaboywf/results-summary-component" }
+    { title: "Result Summary Component", description: "A card design that shows a summary of test results. Frontend Mentor challenge.", usage: ["HTML", "CSS"], image: "results.png", link: "https://github.com/yaboywf/results-summary-component" },
+    { title: "SMJL2 Programme Tracker", description: "This project delivers an integrated digital solution using Microsoft Power Apps, Power Automate, and Power BI to streamline data collection, processing, and reporting across the programme. The solution is designed to reduce manual data handling by Project Managers, improve data consistency and reliability, and provide clear, real-time insights to support programme monitoring and informed decision-making. End users interact solely through a user-friendly Power Apps interface, while Power Automate manages the background processing, validation, and automated workflows, and Power BI provides reporting and analytics capabilities. Together, these three tightly integrated components create a seamless end-to-end workflow, transforming user data inputs into reliable information and meaningful insights for executive reporting.", usage: ["Power Apps", "Power Automate", "Power BI"], image: "smjl2.jpg" }
 ]
 
 const ProjectGrid = ({ gridColumn, gridRow, data, onExpand }: ProjectGridProps) => {
@@ -133,9 +134,10 @@ const Projects = () => {
                 <ProjectGrid data={projects[6]} onExpand={handleExpand} />
                 <ProjectGrid gridColumn="span 2" data={projects[7]} onExpand={handleExpand} />
                 <ProjectGrid gridColumn="span 2" gridRow="span 2" data={projects[8]} onExpand={handleExpand} />
-                <ProjectGrid gridColumn="span 2" data={projects[9]} onExpand={handleExpand} />
+                <ProjectGrid gridColumn="span 2" gridRow="span 2" data={projects[12]} onExpand={handleExpand} />
                 <ProjectGrid data={projects[10]} onExpand={handleExpand} />
                 <ProjectGrid data={projects[11]} onExpand={handleExpand} />
+                <ProjectGrid gridColumn="span 2" data={projects[9]} onExpand={handleExpand} />
             </div>
 
             <div
