@@ -1,7 +1,7 @@
 import { createEffect } from "solid-js";
 import type { JSX } from "solid-js";
 import { useLocation } from "@solidjs/router";
-import "@/styles/icons.scss";
+import "@/styles/icons.css";
 
 export default function Layout(props: { children?: JSX.Element }) {
     const location = useLocation();

@@ -8,7 +8,6 @@ import Loading from "@/pages/Loading";
 const Main = lazy(() => import("@/pages/intro/Main"));
 const Experience = lazy(() => import("@/pages/experience/Experience"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
-// const GL = lazy(() => import("./pages/gl/GL"));
 
 render(() => (
     <HashRouter>
@@ -17,7 +16,6 @@ render(() => (
                 <Route path="/" component={Main} />
                 <Route path="/experience" component={Experience} />
                 <Route path="/contact" component={Contact} />
-                {/* <Route path="/gl" component={GL} /> */}
             </Suspense>
         </Route>
     </HashRouter>

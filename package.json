@@ -1,5 +1,5 @@
 {
-	"name": "portfolio-backend",
+	"name": "portfolio",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
@@ -12,22 +12,19 @@
 	},
 	"dependencies": {
 		"@solidjs/router": "^1.0.0",
-		"motion": "^13.1.0",
 		"ogl": "^1.0.11",
-		"solid-js": "^1.9.14",
-		"solid-motionone": "^1.0.4"
+		"solid-js": "^1.9.15"
 	},
 	"devDependencies": {
 		"@types/node": "^26.2.0",
 		"fonteditor-core": "^2.6.3",
-		"rollup-plugin-visualizer": "^7.0.1",
-		"sass-embedded": "^1.102.0",
+		"rollup-plugin-visualizer": "^7.1.1",
+		"sass-embedded": "^1.103.1",
 		"typescript": "~7.0.2",
-		"vite": "^8.2.1",
-		"vite-plugin-solid": "^2.11.14",
-		"vite-tsconfig-paths": "^6.1.1"
+		"vite": "^8.2.2",
+		"vite-plugin-solid": "^2.11.14"
 	},
 	"overrides": {
-		"vite": "^8.2.1"
+		"vite": "^8.2.2"
 	}
 }

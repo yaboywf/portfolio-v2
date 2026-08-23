@@ -1,5 +1,5 @@
 import { createSignal, Show, onMount } from "solid-js";
-import styles from "./projects.module.scss";
+import styles from "./projects.module.css";
 
 type ProjectGridProps = {
     gridColumn?: string;

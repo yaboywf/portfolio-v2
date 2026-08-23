@@ -2,7 +2,7 @@ import Projects from "./Projects";
 import Particles from "@/components/Particles";
 import BlurText from "@/components/TextEffect";
 import Footer from "@/pages/Footer";
-import "@/styles/general.scss";
+import "@/styles/general.css";
 import styles from './experience.module.scss'
 import { useNavigate } from "@solidjs/router";
 import { onMount } from "solid-js";

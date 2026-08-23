@@ -3,7 +3,7 @@ import SubIntro from "./SubIntro";
 import Techstack from "./Techstack";
 import Certs from "./Certs.tsx";
 import Footer from "../Footer";
-import "@/styles/general.scss";
+import "@/styles/general.css";
 import "./nav.scss";
 import { onMount } from "solid-js";
 import { A } from "@solidjs/router";

@@ -1,6 +1,6 @@
 import { onMount, createSignal } from "solid-js";
 import Particles from "@/components/Particles";
-import "@/styles/general.scss";
+import "@/styles/general.css";
 import styles from "./contact.module.scss";
 import { useNavigate } from "@solidjs/router";
 
