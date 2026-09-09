@@ -23,4 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+public/webfonts/brands.ttf
+public/webfonts/regular.ttf
+Archive.zip
 stats.html

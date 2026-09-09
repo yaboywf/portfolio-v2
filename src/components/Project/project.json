@@ -1,0 +1,118 @@
+[
+    {
+        "title": "The Boys' Brigade 21st Company Website",
+        "description": "A unified digital portal built for the 21st Singapore Company of The Boys’ Brigade. It streamlines parade planning, attendance tracking, uniform inspections, awards, reporting, resources, and member profiles within a secure role-based system for Boys, Primers, Volunteers, and Officers.",
+        "usage": [
+            "Next JS",
+            "SCSS",
+            "PostgreSQL",
+            "Web Push"
+        ],
+        "image": "bbwebsite.webp",
+        "link": "https://github.com/The-Boys-Brigade-21st-Company/BB-21st-Portal",
+        "columns": "span 2",
+        "rows": "span 2"
+    },
+    {
+        "title": "Teach & Tackle",
+        "description": "Cloud-based website that provides a platform for students mentor each other. Diploma Assignment.",
+        "usage": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "AWS Cognito",
+            "AWS Lambda",
+            "AWS S3",
+            "AWS DynamoDB",
+            "AWS API Gateway",
+            "AWS SES"
+        ],
+        "image": "teachtackle.webp",
+        "link": "https://github.com/yaboywf/CADV-Project",
+        "columns": "span 2"
+    },
+    {
+        "title": "Multiplayer Rock Paper Scissors",
+        "description": "Multiplayer game that allows users to play against each other. Uses Socket.io for real-time communication.",
+        "usage": [
+            "React JS",
+            "SCSS",
+            "NodeJS (Socket.io)"
+        ],
+        "image": "rps.webp",
+        "link": "https://github.com/yaboywf/multiplayer-rock-paper-scissors"
+    },
+    {
+        "title": "Chess Club Ranking System",
+        "description": "Simple CRUD website for administrators to manage chess club students. The focus point of this project was about real-world DEVOPS practices inclusive of team collaboration, testing and CI/CD. Diploma Assignment.",
+        "usage": [
+            "HTML",
+            "CSS",
+            "Javascript",
+            "Express JS"
+        ],
+        "image": "chess.png",
+        "link": "https://github.com/yaboywf/DEVOPS-Project"
+    },
+    {
+        "title": "Attendance System",
+        "description": "Website that aims to simplify an attendance process. Includes features such as self marking, form submission, etc. This website also includes user and shared based encryption, where only either the administrator or the user can decrypt the data.",
+        "usage": [
+            "React JS",
+            "SCSS",
+            "Express JS",
+            "Python",
+            "Firebird SQL"
+        ],
+        "image": "attendance.webp",
+        "link": "https://github.com/yaboywf/attendance-system",
+        "columns": "span 2",
+        "rows": "span 2"
+    },
+    {
+        "title": "TP VendPoint",
+        "description": "Website that allows administrators to manage vending machines. It includes multiple full sets of CRUD operations. Diploma Assignment.",
+        "usage": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Express JS",
+            "MySQL"
+        ],
+        "image": "vendpoint.webp",
+        "link": "https://github.com/yaboywf/DBAV-Project",
+        "columns": "span 2"
+    },
+    {
+        "title": "ReFresh Deals",
+        "description": "ReFresh Deals is a mobile app that allows shop owners to post and manage food within their store. Expiring food can be posted to buyers at a discouted price, encouraging them to buy and thereby reducing food waste. Diploma Assignment",
+        "usage": [
+            "Flutter",
+            "Dart"
+        ],
+        "image": "refreshdeals.png",
+        "link": "https://github.com/yaboywf/MBAP-Project",
+        "rows": "span 2",
+        "columns": "span 2"
+    },
+    {
+        "title": "SMJL2 Programme Tracker",
+        "description": "This project delivers an integrated digital solution using Microsoft Power Apps, Power Automate, and Power BI to streamline data collection, processing, and reporting across the programme. The solution is designed to reduce manual data handling by Project Managers, improve data consistency and reliability, and provide clear, real-time insights to support programme monitoring and informed decision-making. End users interact solely through a user-friendly Power Apps interface, while Power Automate manages the background processing, validation, and automated workflows, and Power BI provides reporting and analytics capabilities. Together, these three tightly integrated components create a seamless end-to-end workflow, transforming user data inputs into reliable information and meaningful insights for executive reporting.",
+        "usage": [
+            "Power Apps",
+            "Power Automate",
+            "Power BI",
+            "Dataverse"
+        ],
+        "image": "smjl2.jpg",
+        "rows": "span 2",
+        "columns": "span 2"
+    },
+    {
+        "title": "View More Projects",
+        "description": "",
+        "usage": [],
+        "image": "",
+        "columns": "span 2"
+    }
+]

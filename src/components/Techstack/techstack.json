@@ -1,0 +1,133 @@
+{
+    "Frontend": [
+        {
+            "name": "HTML",
+            "icon": "devicon:html5"
+        },
+        {
+            "name": "CSS3",
+            "icon": "devicon:css3"
+        },
+        {
+            "name": "JavaScript",
+            "icon": "devicon:javascript"
+        },
+        {
+            "name": "TypeScript",
+            "icon": "devicon:typescript"
+        },
+        {
+            "name": "React",
+            "icon": "devicon:react"
+        },
+        {
+            "name": "Next.js",
+            "icon": "devicon:nextjs"
+        }
+    ],
+
+    "Backend": [
+        {
+            "name": "Node.js",
+            "icon": "devicon:nodejs"
+        },
+        {
+            "name": "Python",
+            "icon": "devicon:python"
+        },
+        {
+            "name": "Flask",
+            "icon": "devicon:flask"
+        },
+        {
+            "name": "Django",
+            "icon": "Django",
+            "custom": true
+        },
+        {
+            "name": "Power Platform",
+            "icon": "PowerPlatform",
+            "custom": true
+        }
+    ],
+
+    "Databases": [
+        {
+            "name": "MySQL",
+            "icon": "devicon:mysql"
+        },
+        {
+            "name": "PostgreSQL",
+            "icon": "devicon:postgresql"
+        },
+        {
+            "name": "MongoDB",
+            "icon": "devicon:mongodb"
+        },
+        {
+            "name": "SQLite",
+            "icon": "devicon:sqlite"
+        },
+        {
+            "name": "Firebird SQL",
+            "icon": "devicon:firebird"
+        },
+        {
+            "name": "Firebase",
+            "icon": "devicon:firebase"
+        }
+    ],
+
+    "DevOps": [
+        {
+            "name": "GitHub",
+            "icon": "devicon:github"
+        },
+        {
+            "name": "GitHub Actions",
+            "icon": "devicon:githubactions"
+        },
+        {
+            "name": "Jenkins",
+            "icon": "devicon:jenkins"
+        },
+        {
+            "name": "Playwright",
+            "icon": "devicon:playwright"
+        },
+        {
+            "name": "Amazon Web Services (AWS)",
+            "icon": "devicon:amazonwebservices-wordmark"
+        },
+        {
+            "name": "Google Cloud Platform (GCP)",
+            "icon": "devicon:googlecloud"
+        },
+        {
+            "name": "Docker",
+            "icon": "devicon:docker"
+        },
+        {
+            "name": "Kubernetes",
+            "icon": "devicon:kubernetes"
+        }
+    ],
+    
+    "Mobile": [
+        {
+            "name": "Flutter",
+            "icon": "devicon:flutter"
+        },
+        {
+            "name": "Dart",
+            "icon": "devicon:dart"
+        }
+    ],
+    
+    "Game Development": [
+        {
+            "name": "Pygame",
+            "icon": "devicon:python"
+        }
+    ]
+}

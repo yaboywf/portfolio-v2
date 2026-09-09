@@ -1,0 +1,17 @@
+.footer {
+    color: grey;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 30px;
+}
+
+@media screen and (width <= 600px) {
+    .footer {
+        grid-template-columns: auto;
+        justify-content: center;
+        gap: 20px;
+        text-align: center;
+    }
+}

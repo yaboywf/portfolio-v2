@@ -1,0 +1,52 @@
+.container {
+    width: 350px;
+    height: 280px;
+    padding: 8px;
+    background: #f2f0ef;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    gap: 10px;  
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    margin-bottom: 10px;
+    position-area: top center;
+    position-try-fallbacks: flip-block;
+    animation: fade-in-down 0.3s ease-in-out forwards;
+
+    img {
+        width: 100%;
+        height: 80%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    p:first-of-type {
+        font-weight: bold;
+        font-size: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    p:last-of-type {
+        color: grey;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+@keyframes fade-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

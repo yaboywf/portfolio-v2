@@ -1,0 +1,65 @@
+[
+    {
+        "title": "Python Basic",
+        "image": "hackerrank.webp",
+        "issuer": "HackerRank",
+        "link": "https://www.hackerrank.com/certificates/632ad715175d",
+        "preview": "/previews/python-basic.jpg"
+    },
+    {
+        "title": "CSS Basic",
+        "image": "hackerrank.webp",
+        "issuer": "HackerRank",
+        "link": "https://www.hackerrank.com/certificates/8a3506633a04",
+        "preview": "/previews/css-basic.jpg"
+    },
+    {
+        "title": "SQL Advanced",
+        "image": "hackerrank.webp",
+        "issuer": "HackerRank",
+        "link": "https://www.hackerrank.com/certificates/c8e92d721d55",
+        "preview": "/previews/sql-advanced.jpg"
+    },
+    {
+        "title": "Node Basic",
+        "image": "hackerrank.webp",
+        "issuer": "HackerRank",
+        "link": "https://www.hackerrank.com/certificates/b457e9882934",
+        "preview": "/previews/node-basic.jpg"
+    },
+    {
+        "title": "Problem Solving Basic",
+        "image": "hackerrank.webp",
+        "issuer": "HackerRank",
+        "link": "https://www.hackerrank.com/certificates/229c2962f74e",
+        "preview": "/previews/problem-solving-basic.jpg"
+    },
+    {
+        "title": "AWS Cloud Practitioner",
+        "image": "aws.webp",
+        "issuer": "AWS",
+        "link": "https://www.credly.com/badges/a3225cb1-00ff-4622-855c-cbb1b6d9545f",
+        "preview": "/previews/aws-cloud-practitioner.png"
+    },
+    {
+        "title": "AWS Academy Graduate - Cloud Foundations - Training",
+        "image": "aws.webp",
+        "issuer": "AWS",
+        "link": "https://www.credly.com/badges/bdf09803-0ff2-43c4-b69e-752ae61fa70d",
+        "preview": "/previews/aws-academy-graduate-cloud-foundations-training.png"
+    },
+    {
+        "title": "Basic Proficiency in KNIME Analytics Platform",
+        "image": "knime.webp",
+        "issuer": "KNIME",
+        "link": "https://www.credly.com/badges/18f7f414-e178-4a23-93a1-109c89e42dd0",
+        "preview": "/previews/basic-proficiency-in-knime-analytics-platform.png"
+    },
+    {
+        "title": "Networking Basic",
+        "image": "cisco.webp",
+        "issuer": "Cisco",
+        "link": "https://www.credly.com/badges/f9fb7756-142f-4ce1-b56f-aece364bfeda/public_url",
+        "preview": "/previews/networking-basic.png"
+    }
+]

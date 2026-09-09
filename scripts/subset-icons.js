@@ -12,19 +12,14 @@ const ROOT = path.resolve(__dirname, "..");
 // Font Awesome source fonts
 const FONT_CONFIGS = [
     {
-        name: "solid",
-        input: path.resolve(ROOT, "public/webfonts/solid.ttf"),
-        output: path.resolve(ROOT, "public/webfonts/solid-icons.ttf"),
-    },
-    {
         name: "brands",
         input: path.resolve(ROOT, "public/webfonts/brands.ttf"),
-        output: path.resolve(ROOT, "public/webfonts/brands-icons.ttf"),
+        output: path.resolve(ROOT, "public/webfonts/brands-subset.ttf"),
     },
     {
         name: "regular",
         input: path.resolve(ROOT, "public/webfonts/regular.ttf"),
-        output: path.resolve(ROOT, "public/webfonts/regular-icons.ttf"),
+        output: path.resolve(ROOT, "public/webfonts/regular-subset.ttf"),
     },
 ];
 
