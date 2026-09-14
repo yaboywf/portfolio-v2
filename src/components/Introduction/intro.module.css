@@ -108,6 +108,11 @@
         cursor: pointer;
         transition: scale 0.2s ease-in-out;
 
+        @supports (corner-shape: squircle) {
+            corner-shape: squircle;
+            border-radius: 50px;
+        }
+
         &:hover {
             scale: 1.05;
         }
@@ -167,6 +172,11 @@
         top: 80%;
         position-anchor: none;
         transform: translate(-50%, -50%) !important;
+
+        @supports (corner-shape: squircle) {
+            corner-shape: squircle;
+            border-radius: 50px;
+        }
 
         p {
             font-size: 15px;

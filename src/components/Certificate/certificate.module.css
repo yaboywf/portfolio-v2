@@ -34,6 +34,11 @@
         cursor: pointer;
         transition: scale 0.2s ease-in-out;
 
+        @supports (corner-shape: squircle) {
+            corner-shape: squircle;
+            border-radius: 50px;
+        }
+
         &:hover {
             scale: 1.05
         }
@@ -81,6 +86,11 @@
     align-items: center;
     transition: scale 0.3s ease-in-out;
 
+    @supports (corner-shape: squircle) {
+        corner-shape: squircle;
+        border-radius: 50px;
+    }
+
     &:hover {
         scale: 1.02;
     }
@@ -89,6 +99,12 @@
         grid-area: image;
         aspect-ratio: 1;
         width: 50px;
+        border-radius: 10px;
+
+        @supports (corner-shape: squircle) {
+            corner-shape: squircle;
+            border-radius: 40px;
+        }
     }
 
     h3 {

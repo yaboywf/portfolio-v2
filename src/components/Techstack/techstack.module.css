@@ -43,6 +43,11 @@
     color: white;
     opacity: 0;
 
+    @supports (corner-shape: squircle) {
+        corner-shape: squircle;
+        border-radius: 50px;
+    }
+
     .techstack_header {
         display: flex;
         gap: 10px;
@@ -64,6 +69,11 @@
         align-items: center;
         border-radius: 8px;
         background: #3e2e65;
+
+        @supports (corner-shape: squircle) {
+            corner-shape: squircle;
+            border-radius: 20px;
+        }
     }
 }
 
@@ -86,8 +96,10 @@
     }
 }
 
-@media screen and (width <= 300px) {
-    .techstack_item span, .techstack_header {
+@media screen and (width <=300px) {
+
+    .techstack_item span,
+    .techstack_header {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
