@@ -1,0 +1,20 @@
+.contribution {
+    padding: 20px;
+    overflow-x: auto;
+    background: #291754;
+    color: white;
+    display: flex;
+    gap: 20px;
+    border-radius: 20px;
+    flex-direction: column;
+
+    @supports (corner-shape: squircle) {
+        corner-shape: squircle;
+        border-radius: 50px;
+    }
+
+    p {
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
