@@ -8,7 +8,7 @@ export default function Contributions() {
 
             <GitHubCalendar
                 username="yaboywf"
-                blockSize={12}
+                blockSize={15}
                 blockMargin={4}
                 fontSize={14}
             />

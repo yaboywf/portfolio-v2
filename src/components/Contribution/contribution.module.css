@@ -17,4 +17,8 @@
         font-size: 18px;
         font-weight: bold;
     }
+
+    :global(.react-activity-calendar) {
+        margin: 0 auto;
+    }
 }
