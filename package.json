@@ -22,7 +22,7 @@
 	"devDependencies": {
 		"@preact/preset-vite": "^2.10.6",
 		"@types/node": "^26.5.0",
-		"@yaboywf/font-subsetter": "github:yaboywf/font-subsetter#v1.0.3",
+		"@yaboywf/font-subsetter": "^1.0.4",
 		"rollup-plugin-visualizer": "^7.1.1",
 		"typed-css-modules": "^0.9.1",
 		"typescript": "~6.0.2",
