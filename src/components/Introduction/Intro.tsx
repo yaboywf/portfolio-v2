@@ -20,10 +20,10 @@ const Intro = () => {
             <div className={styles.background_shade}></div>
 
             <p class={styles.sub_heading}>Hello! I'm</p>
-            <div class={styles.heading}>
+            <h1 class={styles.heading}>
                 Dylan
                 <span> Yeo</span>
-            </div>
+            </h1>
 
             <div class={styles.bio}>
                 <p>Year 3 student based in Singapore pursing a Diploma in Information Technology at Temasek Polytechnic.</p>
