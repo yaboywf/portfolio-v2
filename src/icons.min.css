@@ -1,0 +1,135 @@
+@font-face {
+    font-family: "Font Awesome 7 Brands";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/webfonts/brands-subset.woff2)format("woff2")
+}
+
+@font-face {
+    font-family: "Font Awesome 7 Pro";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/webfonts/regular-subset.woff2)format("woff2")
+}
+
+:host,
+:root {
+    --fa-family-brands: "Font Awesome 7 Brands";
+    --fa-family-classic: "Font Awesome 7 Pro";
+    --fa-font-brands: normal 400 1em/1 var(--fa-family-brands);
+    --fa-font-solid: normal 900 1em/1 var(--fa-family-classic);
+    --fa-font-regular: normal 400 1em/1 var(--fa-family-classic)
+}
+
+.fa,
+.fa-solid,
+.fa-regular,
+.fa-brands,
+.fas,
+.far,
+.fab {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: var(--fa-display, inline-block);
+    font-family: var(--_fa-family, var(--fa-style-family, "Font Awesome 7 Pro"));
+    font-feature-settings: normal;
+    font-synthesis: none;
+    font-variant: normal;
+    font-style: normal;
+    font-weight: var(--fa-style, 900);
+    text-align: center;
+    text-rendering: auto;
+    line-height: 1
+}
+
+.fa-solid,
+.fas {
+    --fa-style-family: "Font Awesome 7 Pro";
+    --fa-style: 900
+}
+
+.fa-regular,
+.far {
+    --fa-style-family: "Font Awesome 7 Pro";
+    --fa-style: 400
+}
+
+.fa-brands,
+.fab {
+    --fa-style-family: "Font Awesome 7 Brands";
+    --fa-style: 400
+}
+
+:is(.fa, .fa-solid, .fa-regular, .fa-brands, .fas, .far, .fab):before {
+    content: var(--fa)
+}
+
+.fa-arrow-up-right-from-square {
+    --fa: ""
+}
+
+.fa-briefcase {
+    --fa: ""
+}
+
+.fa-code {
+    --fa: ""
+}
+
+.fa-database {
+    --fa: ""
+}
+
+.fa-diagram-project {
+    --fa: ""
+}
+
+.fa-envelope {
+    --fa: ""
+}
+
+.fa-file-certificate {
+    --fa: ""
+}
+
+.fa-gamepad {
+    --fa: ""
+}
+
+.fa-github {
+    --fa: ""
+}
+
+.fa-infinity {
+    --fa: ""
+}
+
+.fa-instagram {
+    --fa: ""
+}
+
+.fa-linkedin-in {
+    --fa: ""
+}
+
+.fa-mobile {
+    --fa: ""
+}
+
+.fa-server {
+    --fa: ""
+}
+
+.fa-telegram {
+    --fa: ""
+}
+
+.fa-terminal {
+    --fa: ""
+}
+
+.fa-xmark {
+    --fa: ""
+}
