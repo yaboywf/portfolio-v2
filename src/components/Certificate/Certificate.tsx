@@ -52,7 +52,7 @@ const Certificate = () => {
                             style={{ anchorName: `--certificate-${index}` }}
                             aria-label={`View ${cert.title} certificate`}
                         >
-                            <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                            <i className="fa-regular fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
                 ))}

@@ -35,7 +35,7 @@ const Intro = () => {
                         <i className="fa-brands fa-linkedin-in"></i>
                     </a>
                     <a href="mailto:dylanyeowf@gmail.com" target='_blank' aria-label="Email me">
-                        <i className="fa-solid fa-envelope"></i>
+                        <i className="fa-regular fa-envelope"></i>
                     </a>
                     <a href="https://www.instagram.com/yaboywf/" target='_blank' aria-label="View my Instagram profile">
                         <i className="fa-brands fa-instagram"></i>
