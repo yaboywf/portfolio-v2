@@ -9,7 +9,7 @@ import Experience from './components/Experience/Experience'
 import Footer from './components/Footer/Footer'
 
 import "./general.css"
-import "./icons.css"
+import "./icons.min.css"
 
 render(
     <>

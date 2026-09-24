@@ -1,4 +1,5 @@
 declare const styles: {
+  readonly "fa": string;
   readonly "fa-arrow-up-right-from-square": string;
   readonly "fa-brands": string;
   readonly "fa-briefcase": string;
@@ -19,6 +20,9 @@ declare const styles: {
   readonly "fa-telegram": string;
   readonly "fa-terminal": string;
   readonly "fa-xmark": string;
+  readonly "fab": string;
+  readonly "far": string;
+  readonly "fas": string;
 };
 export = styles;
 
