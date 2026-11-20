@@ -95,15 +95,19 @@
         scale: 1.02;
     }
 
-    img {
+    picture {
         grid-area: image;
         aspect-ratio: 1;
         width: 50px;
-        border-radius: 10px;
 
-        @supports (corner-shape: squircle) {
-            corner-shape: squircle;
-            border-radius: 40px;
+        img {
+            border-radius: 10px;
+            width: 100%;
+
+            @supports (corner-shape: squircle) {
+                corner-shape: squircle;
+                border-radius: 40px;
+            }
         }
     }
 

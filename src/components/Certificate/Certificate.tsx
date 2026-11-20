@@ -3,6 +3,52 @@ import LinkPreview from '../LinkPreview/LinkPreview';
 import Certificates from './certificate.json';
 import styles from './certificate.module.css';
 
+const jxlImages = import.meta.glob(
+  "../../assets/certs/*.webp",
+  {
+    eager: true,
+    query: "?format=jxl",
+    import: "default",
+  }
+) as Record<string, string>;
+
+const webpImages = import.meta.glob(
+  "../../assets/certs/*.webp",
+  {
+    eager: true,
+    query: "?format=webp",
+    import: "default",
+  }
+) as Record<string, string>;
+
+const getImage = (
+  images: Record<string, string>,
+  filename: string
+) => images[`../../assets/certs/${filename}`];
+
+const previewJxl = import.meta.glob(
+  "../../assets/previews/*.{jpg,jpeg,png,webp}",
+  {
+    eager: true,
+    query: "?format=jxl",
+    import: "default",
+  }
+) as Record<string, string>;
+
+const previewWebp = import.meta.glob(
+  "../../assets/previews/*.{jpg,jpeg,png,webp}",
+  {
+    eager: true,
+    query: "?format=webp",
+    import: "default",
+  }
+) as Record<string, string>;
+
+const getPreview = (
+  images: Record<string, string>,
+  path: string
+) => images[`../../assets${path}`];
+
 type HoveredLink = {
     certificate: (typeof Certificates)[number];
     anchorName: string;
@@ -41,7 +87,20 @@ const Certificate = () => {
             <div className={styles.certificate_list} ref={ref} data-collapsed={collapsed}>
                 {Certificates.map((cert, index) => (
                     <div key={index} className={`${styles.certificate_item}`} style={{ animationDelay: `${index * 0.1}s` }}>
-                        <img src={`/certs/${cert.image}`} alt={cert.title} loading="lazy" />
+                        
+<picture>
+  <source
+    srcSet={getImage(jxlImages, cert.image)}
+    type="image/jxl"
+  />
+  <img
+    src={getImage(webpImages, cert.image)}
+    alt={cert.title}
+    loading="lazy"
+    decoding="async"
+  />
+</picture>
+
                         <h3>{cert.title}</h3>
                         <p>{cert.issuer}</p>
                         <a
@@ -60,13 +119,16 @@ const Certificate = () => {
 
             <button onClick={() => setCollapsed(prev => !prev)}>Show {collapsed ? "More" : "Less"}</button>
 
-            {hoveredLink && <LinkPreview
-                key={hoveredLink.anchorName}
-                src={hoveredLink.certificate.preview}
-                title={hoveredLink.certificate.title}
-                link={hoveredLink.certificate.link}
-                anchorName={hoveredLink.anchorName}
-            />}
+            {hoveredLink && (
+  <LinkPreview
+    key={hoveredLink.anchorName}
+    jxl={getPreview(previewJxl, hoveredLink.certificate.preview)}
+    webp={getPreview(previewWebp, hoveredLink.certificate.preview)}
+    title={hoveredLink.certificate.title}
+    link={hoveredLink.certificate.link}
+    anchorName={hoveredLink.anchorName}
+  />
+)}
         </div>
     )
 }
