@@ -1,21 +1,37 @@
-import styles from "./linkPreview.module.css"
+
+import styles from "./linkPreview.module.css";
 
 type Props = {
-    src: string,
-    title: string,
-    link: string,
-    anchorName: string
-}
+    jxl: string;
+    webp: string;
+    title: string;
+    link: string;
+    anchorName: string;
+};
 
-const LinkPreview = ({ src, title, link, anchorName }: Props) => {
-    console.log(anchorName)
-    return (
-        <div style={{ positionAnchor: anchorName.replaceAll(" ", "") }} className={styles.container}>
-            <img src={src} alt={src} loading="lazy" />
-            <p>{title}</p>
-            <p>{link}</p>
-        </div>
-    )
-}
+const LinkPreview = ({
+    jxl,
+    webp,
+    title,
+    link,
+    anchorName,
+}: Props) => (
+    <div
+        style={{ positionAnchor: anchorName }}
+        className={styles.container}
+    >
+        <picture>
+            <source srcSet={jxl} type="image/jxl" />
+            <img
+                src={webp}
+                alt={title}
+                loading="lazy"
+                decoding="async"
+            />
+        </picture>
+        <p>{title}</p>
+        <p>{link}</p>
+    </div>
+);
 
-export default LinkPreview
+export default LinkPreview;

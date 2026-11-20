@@ -89,7 +89,7 @@
 	top: anchor(top);
 	width: anchor-size(width);
 	height: anchor-size(height);
-	overflow: hidden;
+	overflow-y: auto;
 
 	&.open {
 		top: 50%;
@@ -131,13 +131,19 @@
 		display: flex;
 		gap: 20px;
 
-		img {
+		picture {
 			flex: 1;
+            min-width: 65%;
 			width: 65%;
-			max-height: 100%;
+			max-height: 500px;
 			height: max-content;
+            overflow: clip;
 			border-radius: 10px;
 			object-fit: contain;
+
+            img {
+                width: 100%;
+            }
 		}
 	}
 

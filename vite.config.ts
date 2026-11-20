@@ -2,14 +2,14 @@ import preact from '@preact/preset-vite'
 import { defineConfig } from 'vite'
 import { visualizer } from 'rollup-plugin-visualizer';
 import { VitePWA } from "vite-plugin-pwa";
-import { viteSingleFile } from "vite-plugin-singlefile";
 import { imagetools } from "vite-imagetools";
 
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [
-		preact(),
-		viteSingleFile(),
+		preact({
+            prerender: { enabled: true, renderTarget: "body", },
+        }),
 		imagetools(),
 		visualizer({
 			filename: 'stats.html',

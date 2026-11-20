@@ -1,0 +1,9 @@
+{
+    "ignoreDependencies": [
+        "node-addon-api",
+        "node-gyp",
+        "sharp",
+        "playwright",
+        "@fontsource-variable/geist"
+    ]
+}

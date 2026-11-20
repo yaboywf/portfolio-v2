@@ -1,15 +1,16 @@
 import { useEffect, useRef, type Dispatch, type StateUpdater } from "preact/hooks";
 import type { SelectedProject } from "./Project";
-import styles from './project.module.css'
+import { getProjectImage } from "./ProjectCard";
+import styles from './project.module.css';
 
 type Props = {
     selected: SelectedProject;
-    setSelected: Dispatch<StateUpdater<SelectedProject | null>>
-}
+    setSelected: Dispatch<StateUpdater<SelectedProject | null>>;
+};
 
 const ProjectDetail = ({ selected, setSelected }: Props) => {
     const ref = useRef<HTMLDivElement | null>(null);
-    
+
     useEffect(() => {
         if (!ref.current) return;
         document.body.style.overflow = "hidden";
@@ -19,12 +20,12 @@ const ProjectDetail = ({ selected, setSelected }: Props) => {
     }, [selected]);
 
     const handleClose = () => {
-        if (!ref.current) return
+        if (!ref.current) return;
 
         ref.current.classList.remove(styles.open);
         ref.current.addEventListener("transitionend", () => {
             document.body.style.overflow = "";
-            setSelected(null)
+            setSelected(null);
         }, { once: true });
     };
 
@@ -42,7 +43,20 @@ const ProjectDetail = ({ selected, setSelected }: Props) => {
             </div>
             <div className={styles.information}>
                 <p>{selected.project.description}</p>
-                <img src={selected.project.image ? `/project/${selected.project.image}` : ""} alt={selected.project.image} loading="lazy" />
+                {selected.project.image && (
+                    <picture>
+                        <source
+                            srcSet={getProjectImage(selected.project.image, "jxl")}
+                            type="image/jxl"
+                        />
+                        <img
+                            src={getProjectImage(selected.project.image, "webp")}
+                            alt={selected.project.title}
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </picture>
+                )}
             </div>
 
             <div className={styles.links}>
@@ -52,7 +66,7 @@ const ProjectDetail = ({ selected, setSelected }: Props) => {
                         <span>View Project</span>
                     </a>
                 </button>}
-                
+
                 <button onClick={handleClose}>
                     <i className="fa-regular fa-xmark"></i>
                 </button>
@@ -61,4 +75,4 @@ const ProjectDetail = ({ selected, setSelected }: Props) => {
     );
 };
 
-export default ProjectDetail
+export default ProjectDetail;

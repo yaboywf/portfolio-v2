@@ -1,6 +1,35 @@
 import type { Dispatch, StateUpdater } from 'preact/hooks';
-import type { ProjectType, SelectedProject } from './Project'
-import styles from './project.module.css'
+import type { ProjectType, SelectedProject } from './Project';
+import styles from './project.module.css';
+
+
+const jxlImages = import.meta.glob(
+    "../../assets/projects/*.{jpg,jpeg,png,webp}",
+    {
+        eager: true,
+        query: "?format=jxl",
+        import: "default",
+    }
+) as Record<string, string>;
+
+const webpImages = import.meta.glob(
+    "../../assets/projects/*.{jpg,jpeg,png,webp}",
+    {
+        eager: true,
+        query: "?format=webp",
+        import: "default",
+    }
+) as Record<string, string>;
+
+
+export const getProjectImage = (
+    filename: string,
+    format: "jxl" | "webp"
+) => {
+    const images = format === "jxl" ? jxlImages : webpImages;
+    return images[`../../assets/projects/${filename}`];
+};
+
 
 type Props = {
     gridColumn?: string;
@@ -8,8 +37,8 @@ type Props = {
     project: ProjectType;
     anchorName: string,
     selected: SelectedProject | null,
-    setSelected: Dispatch<StateUpdater<SelectedProject | null>>
-}
+    setSelected: Dispatch<StateUpdater<SelectedProject | null>>;
+};
 
 const ProjectCard = ({ gridColumn, gridRow, project, anchorName, selected, setSelected }: Props) => {
     return (
@@ -22,19 +51,29 @@ const ProjectCard = ({ gridColumn, gridRow, project, anchorName, selected, setSe
             }}
             class={styles.project_card}
             onClick={() => {
-                if (project.title === "View More Projects") window.open("https://github.com/yaboywf?tab=repositories", "_blank")
-                else setSelected({ project, anchorName })
+                if (project.title === "View More Projects") window.open("https://github.com/yaboywf?tab=repositories", "_blank");
+                else setSelected({ project, anchorName });
             }}
         >
-            {project.title !== "View More Projects" && <img
-                className={styles.project_image_mobile}
-                src={`/project/${project.image}`}
-                alt={project.title}
-                loading="lazy"
-            />}
+            {project.image && (
+                <picture>
+                    <source
+                        srcSet={getProjectImage(project.image, "jxl")}
+                        type="image/jxl"
+                    />
+                    <img
+                        className={styles.project_image_mobile}
+                        src={getProjectImage(project.image, "webp")}
+                        alt={project.title}
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </picture>
+            )}
+
             <p>{project.title}</p>
         </div>
-    )
-}
+    );
+};
 
-export default ProjectCard
+export default ProjectCard;
