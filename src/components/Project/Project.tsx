@@ -1,24 +1,24 @@
-import { useState } from 'preact/hooks'
-import Projects from './project.json'
+import { useState } from "preact/hooks";
+import Contributions from "../Contribution/Contribution";
+import Projects from "./project.json";
 import styles from "./project.module.css";
+import ProjectCard from "./ProjectCard";
 import ProjectDetail from "./ProjectDetail";
-import ProjectCard from "./ProjectCard"
-import Contributions from '../Contribution/Contribution';
 
 export type ProjectType = {
-    title: string,
-    image: string,
-    link?: string,
-    usage: string[],
-    description: string,
-    rows?: string,
-    columns?: string
-}
+    title: string;
+    image: string;
+    link?: string;
+    usage: string[];
+    description: string;
+    rows?: string;
+    columns?: string;
+};
 
 export type SelectedProject = {
-    project: ProjectType,
-    anchorName: string
-}
+    project: ProjectType;
+    anchorName: string;
+};
 
 const Project = () => {
     const [selected, setSelected] = useState<SelectedProject | null>(null);
@@ -32,7 +32,15 @@ const Project = () => {
 
             <div class={styles.project_grid}>
                 {Projects.map((project, index) => (
-                    <ProjectCard project={project} selected={selected} gridColumn={project.columns} gridRow={project.rows} setSelected={setSelected} anchorName={`--project-${index}`} />
+                    <ProjectCard
+                        key={project.title}
+                        project={project}
+                        selected={selected}
+                        gridColumn={project.columns}
+                        gridRow={project.rows}
+                        setSelected={setSelected}
+                        anchorName={`--project-${index}`}
+                    />
                 ))}
             </div>
 

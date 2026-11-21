@@ -1,61 +1,31 @@
-import { useEffect, useMemo, useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 type TypewriterProps = {
     text: string;
     speed?: number;
 };
 
-export default function Typewriter({ text, speed = 5 }: TypewriterProps) {
-    const [displayedText, setDisplayedText] = useState("");
+export default function Typewriter({ text, speed = 20 }: TypewriterProps) {
+    const [length, setLength] = useState(0);
 
     useEffect(() => {
-        setDisplayedText("");
+        setLength(0);
+
+        if (!text.length) return;
 
         let index = 0;
 
         const interval = window.setInterval(() => {
-            setDisplayedText((previous) => {
-                return previous + text.charAt(index);
-            });
-
             index++;
+            setLength(index);
 
             if (index >= text.length) {
-                window.clearInterval(interval);
+                clearInterval(interval);
             }
         }, speed);
 
-        return () => {
-            window.clearInterval(interval);
-        };
+        return () => clearInterval(interval);
     }, [text, speed]);
 
-    const parts = useMemo(() => {
-        const placeholder = displayedText
-            .replace(/br/g, "@@DOUBLE@@")
-            .replace(/\n/g, "@@SINGLE@@");
-
-        return placeholder.split(/(@@DOUBLE@@|@@SINGLE@@)/);
-    }, [displayedText]);
-
-    return (
-        <pre>
-            {parts.map((part, index) => {
-                if (part === "@@DOUBLE@@") {
-                    return (
-                        <span key={index}>
-                            <br />
-                            <br />
-                        </span>
-                    );
-                }
-
-                if (part === "@@SINGLE@@") {
-                    return <br key={index} />;
-                }
-
-                return <span key={index}>{part}</span>;
-            })}
-        </pre>
-    );
+    return <pre>{text.slice(0, length)}</pre>;
 }

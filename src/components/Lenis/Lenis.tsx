@@ -1,27 +1,22 @@
-import { useEffect } from "preact/hooks"
-import Lenis from "lenis"
+import { setLenis } from "./smooth-scroll";
+import { useEffect } from "preact/hooks";
+import Lenis from "lenis";
 
 export default function SmoothScroll() {
     useEffect(() => {
         const lenis = new Lenis({
             duration: 1.2,
-            smoothWheel: true
-        })
+            smoothWheel: true,
+            autoRaf: true,
+        });
 
-        let animationFrame: number
-
-        const raf = (time: number) => {
-            lenis.raf(time)
-            animationFrame = requestAnimationFrame(raf)
-        }
-
-        animationFrame = requestAnimationFrame(raf)
+        setLenis(lenis);
 
         return () => {
-            cancelAnimationFrame(animationFrame)
-            lenis.destroy()
-        }
-    }, [])
+            setLenis(null);
+            lenis.destroy();
+        };
+    }, []);
 
-    return null
+    return null;
 }

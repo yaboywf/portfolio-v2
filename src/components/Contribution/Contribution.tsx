@@ -6,12 +6,7 @@ export default function Contributions() {
         <div className={styles.contribution}>
             <p>GitHub Contributions</p>
 
-            <GitHubCalendar
-                username="yaboywf"
-                blockSize={15}
-                blockMargin={4}
-                fontSize={14}
-            />
+            <GitHubCalendar username="yaboywf" blockSize={15} blockMargin={4} fontSize={14} />
         </div>
     );
 }

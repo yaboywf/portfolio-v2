@@ -1,16 +1,10 @@
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { chromium } from "playwright";
-import {
-    mkdir,
-    readFile,
-    writeFile,
-} from "node:fs/promises";
 import path from "node:path";
 
-const certificateFile =
-    "src/components/Certificate/certificate.json";
+const certificateFile = "src/components/Certificate/certificate.json";
 
-const previewDirectory =
-    "public/previews";
+const previewDirectory = "public/previews";
 
 function createSlug(title) {
     return title
@@ -20,15 +14,15 @@ function createSlug(title) {
 }
 
 function getImageExtension(contentType) {
-    const extensions = {
-        "image/jpeg": "jpg",
-        "image/png": "png",
-        "image/webp": "webp",
-        "image/gif": "gif",
-        "image/avif": "avif",
-    };
+    const extensions = new Map([
+        ["image/jpeg", "jpg"],
+        ["image/png", "png"],
+        ["image/webp", "webp"],
+        ["image/gif", "gif"],
+        ["image/avif", "avif"],
+    ]);
 
-    return extensions[contentType] ?? null;
+    return extensions.get(contentType) ?? null;
 }
 
 async function saveOgImage(page, slug) {
@@ -44,10 +38,7 @@ async function saveOgImage(page, slug) {
         return null;
     }
 
-    const imageUrl = new URL(
-        ogImage,
-        page.url(),
-    ).href;
+    const imageUrl = new URL(ogImage, page.url()).href;
 
     const response = await fetch(imageUrl);
 
@@ -55,26 +46,18 @@ async function saveOgImage(page, slug) {
         return null;
     }
 
-    const contentType = response.headers
-        .get("content-type")
-        ?.split(";")[0];
+    const contentType = response.headers.get("content-type")?.split(";")[0];
 
-    const extension =
-        getImageExtension(contentType);
+    const extension = getImageExtension(contentType);
 
     if (!extension) {
         return null;
     }
 
     const fileName = `${slug}.${extension}`;
-    const outputPath = path.join(
-        previewDirectory,
-        fileName,
-    );
+    const outputPath = path.join(previewDirectory, fileName);
 
-    const image = Buffer.from(
-        await response.arrayBuffer(),
-    );
+    const image = Buffer.from(await response.arrayBuffer());
 
     await writeFile(outputPath, image);
 
@@ -83,10 +66,7 @@ async function saveOgImage(page, slug) {
 
 async function takeScreenshot(page, slug) {
     const fileName = `${slug}.jpg`;
-    const outputPath = path.join(
-        previewDirectory,
-        fileName,
-    );
+    const outputPath = path.join(previewDirectory, fileName);
 
     await page.screenshot({
         path: outputPath,
@@ -98,46 +78,29 @@ async function takeScreenshot(page, slug) {
     return `/previews/certificates/${fileName}`;
 }
 
-async function generatePreview(
-    page,
-    certificate,
-) {
+async function generatePreview(page, certificate) {
     await page.goto(certificate.link, {
         waitUntil: "domcontentloaded",
         timeout: 30000,
     });
 
-    const slug = createSlug(
-        certificate.title,
-    );
+    const slug = createSlug(certificate.title);
 
-    const ogPreview = await saveOgImage(
-        page,
-        slug,
-    );
+    const ogPreview = await saveOgImage(page, slug);
 
     if (ogPreview) {
-        console.log(
-            `OG image: ${certificate.title}`,
-        );
+        console.log(`OG image: ${certificate.title}`);
 
         return ogPreview;
     }
 
-    console.log(
-        `Screenshot: ${certificate.title}`,
-    );
+    console.log(`Screenshot: ${certificate.title}`);
 
     return takeScreenshot(page, slug);
 }
 
 async function main() {
-    const certificates = JSON.parse(
-        await readFile(
-            certificateFile,
-            "utf8",
-        ),
-    );
+    const certificates = JSON.parse(await readFile(certificateFile, "utf8"));
 
     await mkdir(previewDirectory, {
         recursive: true,
@@ -149,55 +112,35 @@ async function main() {
     });
 
     try {
-        const context =
-            await browser.newContext({
-                viewport: {
-                    width: 640,
-                    height: 360,
-                },
-            });
+        const context = await browser.newContext({
+            viewport: {
+                width: 640,
+                height: 360,
+            },
+        });
 
-        const page =
-            await context.newPage();
+        const page = await context.newPage();
 
         const updatedCertificates = [];
 
         for (const certificate of certificates) {
             try {
-                const preview =
-                    await generatePreview(
-                        page,
-                        certificate,
-                    );
+                const preview = await generatePreview(page, certificate);
 
                 updatedCertificates.push({
                     ...certificate,
                     preview,
                 });
             } catch (error) {
-                console.error(
-                    `Failed: ${certificate.title}`,
-                    error,
-                );
+                console.error(`Failed: ${certificate.title}`, error);
 
-                updatedCertificates.push(
-                    certificate,
-                );
+                updatedCertificates.push(certificate);
             }
         }
 
-        await writeFile(
-            certificateFile,
-            `${JSON.stringify(
-                updatedCertificates,
-                null,
-                4,
-            )}\n`,
-        );
+        await writeFile(certificateFile, `${JSON.stringify(updatedCertificates, null, 4)}\n`);
 
-        console.log(
-            "Certificate previews completed.",
-        );
+        console.log("Certificate previews completed.");
     } finally {
         await browser.close();
     }

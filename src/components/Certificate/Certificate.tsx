@@ -1,53 +1,35 @@
-import { useEffect, useRef, useState } from 'preact/hooks';
-import LinkPreview from '../LinkPreview/LinkPreview';
-import Certificates from './certificate.json';
-import styles from './certificate.module.css';
+import { useEffect, useRef, useState } from "preact/hooks";
+import LinkPreview from "../LinkPreview/LinkPreview";
+import Certificates from "./certificate.json";
+import styles from "./certificate.module.css";
 
-const jxlImages = import.meta.glob(
-  "../../assets/certs/*.webp",
-  {
+const jxlImages = import.meta.glob("../../assets/certs/*.webp", {
     eager: true,
     query: "?format=jxl",
     import: "default",
-  }
-) as Record<string, string>;
+}) as Record<string, string>;
 
-const webpImages = import.meta.glob(
-  "../../assets/certs/*.webp",
-  {
+const webpImages = import.meta.glob("../../assets/certs/*.webp", {
     eager: true,
     query: "?format=webp",
     import: "default",
-  }
-) as Record<string, string>;
+}) as Record<string, string>;
 
-const getImage = (
-  images: Record<string, string>,
-  filename: string
-) => images[`../../assets/certs/${filename}`];
+const getImage = (images: Record<string, string>, filename: string) => images[`../../assets/certs/${filename}`];
 
-const previewJxl = import.meta.glob(
-  "../../assets/previews/*.{jpg,jpeg,png,webp}",
-  {
+const previewJxl = import.meta.glob("../../assets/previews/*.{jpg,jpeg,png,webp}", {
     eager: true,
     query: "?format=jxl",
     import: "default",
-  }
-) as Record<string, string>;
+}) as Record<string, string>;
 
-const previewWebp = import.meta.glob(
-  "../../assets/previews/*.{jpg,jpeg,png,webp}",
-  {
+const previewWebp = import.meta.glob("../../assets/previews/*.{jpg,jpeg,png,webp}", {
     eager: true,
     query: "?format=webp",
     import: "default",
-  }
-) as Record<string, string>;
+}) as Record<string, string>;
 
-const getPreview = (
-  images: Record<string, string>,
-  path: string
-) => images[`../../assets${path}`];
+const getPreview = (images: Record<string, string>, path: string) => images[`../../assets${path}`];
 
 type HoveredLink = {
     certificate: (typeof Certificates)[number];
@@ -56,7 +38,7 @@ type HoveredLink = {
 
 const Certificate = () => {
     const [hoveredLink, setHoveredLink] = useState<HoveredLink | null>(null);
-    const [collapsed, setCollapsed] = useState<boolean>(true)
+    const [collapsed, setCollapsed] = useState<boolean>(true);
     const ref = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -72,7 +54,7 @@ const Certificate = () => {
             },
             {
                 threshold: 0.2,
-            }
+            },
         );
 
         observer.observe(element);
@@ -87,19 +69,10 @@ const Certificate = () => {
             <div className={styles.certificate_list} ref={ref} data-collapsed={collapsed}>
                 {Certificates.map((cert, index) => (
                     <div key={index} className={`${styles.certificate_item}`} style={{ animationDelay: `${index * 0.1}s` }}>
-                        
-<picture>
-  <source
-    srcSet={getImage(jxlImages, cert.image)}
-    type="image/jxl"
-  />
-  <img
-    src={getImage(webpImages, cert.image)}
-    alt={cert.title}
-    loading="lazy"
-    decoding="async"
-  />
-</picture>
+                        <picture>
+                            <source srcSet={getImage(jxlImages, cert.image)} type="image/jxl" />
+                            <img src={getImage(webpImages, cert.image)} alt={cert.title} loading="lazy" decoding="async" />
+                        </picture>
 
                         <h3>{cert.title}</h3>
                         <p>{cert.issuer}</p>
@@ -107,7 +80,8 @@ const Certificate = () => {
                             href={cert.link}
                             onMouseEnter={() => setHoveredLink({ certificate: cert, anchorName: `--certificate-${index}` })}
                             onMouseLeave={() => setHoveredLink(null)}
-                            target="_blank" rel="noopener noreferrer"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             style={{ anchorName: `--certificate-${index}` }}
                             aria-label={`View ${cert.title} certificate`}
                         >
@@ -117,20 +91,20 @@ const Certificate = () => {
                 ))}
             </div>
 
-            <button onClick={() => setCollapsed(prev => !prev)}>Show {collapsed ? "More" : "Less"}</button>
+            <button onClick={() => setCollapsed((prev) => !prev)}>Show {collapsed ? "More" : "Less"}</button>
 
             {hoveredLink && (
-  <LinkPreview
-    key={hoveredLink.anchorName}
-    jxl={getPreview(previewJxl, hoveredLink.certificate.preview)}
-    webp={getPreview(previewWebp, hoveredLink.certificate.preview)}
-    title={hoveredLink.certificate.title}
-    link={hoveredLink.certificate.link}
-    anchorName={hoveredLink.anchorName}
-  />
-)}
+                <LinkPreview
+                    key={hoveredLink.anchorName}
+                    jxl={getPreview(previewJxl, hoveredLink.certificate.preview)}
+                    webp={getPreview(previewWebp, hoveredLink.certificate.preview)}
+                    title={hoveredLink.certificate.title}
+                    link={hoveredLink.certificate.link}
+                    anchorName={hoveredLink.anchorName}
+                />
+            )}
         </div>
-    )
-}
+    );
+};
 
 export default Certificate;

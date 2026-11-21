@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'preact/hooks';
-import styles from './experience.module.css'
+import { useEffect, useRef, useState } from "preact/hooks";
+import styles from "./experience.module.css";
 import Typewriter from "./TypeWriter";
 
 const text = `Experiences Overview
@@ -31,7 +31,7 @@ const Experience = () => {
             },
             {
                 threshold: 0.2,
-            }
+            },
         );
 
         observer.observe(element);

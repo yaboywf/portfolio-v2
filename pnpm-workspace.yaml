@@ -1,4 +1,24 @@
 allowBuilds:
   '@playwright/browser-chromium': true
+  esbuild: set this to true or false
+  workerd: set this to true or false
 
 minimumReleaseAge: 0
+catalog:
+  vite: npm:@voidzero-dev/vite-plus-core@8.3.8000
+  vite-plus: 1.7.0
+overrides:
+  vite@*: 'catalog:'
+minimumReleaseAgeExclude:
+  - vite-plus
+  - '@voidzero-dev/*'
+  - oxlint
+  - '@oxlint/*'
+  - oxlint-tsgolint
+  - '@oxlint-tsgolint/*'
+  - tsrs
+  - '@tsrs/*'
+  - oxfmt
+  - '@oxfmt/*'
+  - vitest
+  - '@vitest/*'
