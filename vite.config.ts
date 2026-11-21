@@ -1,9 +1,8 @@
-
-import preact from "@preact/preset-vite";
 import { visualizer } from "rollup-plugin-visualizer";
-import { defineConfig, lazyPlugins } from "vite-plus";
 import { imagetools } from "vite-imagetools";
 import { VitePWA } from "vite-plugin-pwa";
+import { defineConfig, lazyPlugins } from "vite-plus";
+import preact from "@preact/preset-vite";
 
 export default defineConfig({
     fmt: {
@@ -102,13 +101,9 @@ export default defineConfig({
             injectRegister: "inline",
             registerType: "autoUpdate",
             workbox: {
+                navigateFallback: null,
                 globPatterns: ["**/*.{js,css,html,ico,png,jpg,jpeg,jxl,svg,webp,woff,woff2,ttf}"],
-                globIgnores: [
-                    "**/webfonts/solid.ttf",
-                    "**/webfonts/regular.ttf",
-                    "**/webfonts/brands.ttf",
-                    "stats.html",
-                ],
+                globIgnores: ["**/webfonts/solid.ttf", "**/webfonts/regular.ttf", "**/webfonts/brands.ttf", "stats.html"],
                 cleanupOutdatedCaches: true,
                 clientsClaim: true,
                 skipWaiting: true,

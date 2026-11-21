@@ -71,7 +71,7 @@ const Certificate = () => {
                     <div key={index} className={`${styles.certificate_item}`} style={{ animationDelay: `${index * 0.1}s` }}>
                         <picture>
                             <source srcSet={getImage(jxlImages, cert.image)} type="image/jxl" />
-                            <img src={getImage(webpImages, cert.image)} alt={cert.title} loading="lazy" decoding="async" />
+                            <img src={getImage(webpImages, cert.image)} alt={cert.title} width={50} height={50} loading="lazy" decoding="async" />
                         </picture>
 
                         <h3>{cert.title}</h3>
